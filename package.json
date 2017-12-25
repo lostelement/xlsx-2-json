@@ -1,0 +1,20 @@
+{
+  "name": "xlsx-2-json",
+  "version": "1.0.0",
+  "description": "excel to json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lostelement/xlsx-2-json.git"
+  },
+  "keywords": [],
+  "author": "elementli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lostelement/xlsx-2-json/issues"
+  },
+  "homepage": "https://github.com/lostelement/xlsx-2-json#readme"
+}
