@@ -24,7 +24,7 @@ xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 ```
 
 #3.Sheet and Json
-![Sheet](https://www.snowkit.cn/h5/egj.jpg)
+![Sheet](http://upload.ouliu.net/i/20171226130417sme3n.jpeg)
 ```javascript
 [
 	{
