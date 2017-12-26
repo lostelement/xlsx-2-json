@@ -23,8 +23,8 @@ xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 });
 ```
 
-#3.Sheet and Json
-
+# 3.Sheet and Json
+表格:
 ![Sheet](http://upload.ouliu.net/i/20171226130417sme3n.jpeg)
 ```javascript
 [
