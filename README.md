@@ -1,6 +1,6 @@
 # xlsx-2-json
 
-##1.Excel文件配置规范
+# 1.Excel文件配置规范
 
 >1.字段名*(key)*必须为英文字母
 >
@@ -14,11 +14,11 @@
 >
 >6.遍历xlsx文件里的sheet，在output目录输出以sheet name为名字的json文件
 
-##2.脚本调用：
+# 2.脚本调用：
 例：在build.js里
 ```
-	const xlsx2json = require("xlsx-gen-json");
-	xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
-		e?console.log(e):console.log(r);
-	});
+const xlsx2json = require("xlsx-gen-json");
+xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
+	e?console.log(e):console.log(r);
+});
 ```
