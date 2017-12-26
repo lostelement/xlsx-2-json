@@ -16,7 +16,7 @@
 
 # 2.脚本调用：
 例：在build.js里
-```
+```javascript
 const xlsx2json = require("xlsx-gen-json");
 xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 	e?console.log(e):console.log(r);
@@ -24,10 +24,8 @@ xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 ```
 
 #3.Sheet and Json
-|toyid|price|name|辅助列|
-|:----|-----|----|:---:|
-|1|100|superman|不会生成|
-```
+![Sheet](https://www.snowkit.cn/h5/egj.jpg)
+```javascript
 [
 	{
 		toyid:1,
