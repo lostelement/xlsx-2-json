@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'adduser' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.4
+4 verbose adduser before first PUT { _id: 'org.couchdb.user:elementli_at_tencent',
+4 verbose adduser   name: 'elementli_at_tencent',
+4 verbose adduser   password: 'XXXXX',
+4 verbose adduser   email: 'elementli@tencent.com',
+4 verbose adduser   type: 'user',
+4 verbose adduser   roles: [],
+4 verbose adduser   date: '2017-12-26T01:52:01.139Z' }
+5 verbose request uri http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent
+6 verbose request new user, so can't send auth
+7 info attempt registry request try #1 at 09:52:01
+8 verbose request id 8ea445d6fae1e084
+9 http request PUT http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent
+10 http 409 http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent
+11 verbose headers { server: 'nginx/1.8.0',
+11 verbose headers   date: 'Tue, 26 Dec 2017 01:53:51 GMT',
+11 verbose headers   'content-type': 'application/json; charset=utf-8',
+11 verbose headers   'content-length': '73',
+11 verbose headers   connection: 'keep-alive',
+11 verbose headers   vary: 'Accept-Encoding',
+11 verbose headers   'x-readtime': '6' }
+12 verbose request invalidating /Users/elementli/.npm/r.tnpm.oa.com/-/user/org.couchdb.user_3Aelementli_at_tencent on PUT
+13 verbose adduser update existing user
+14 verbose request uri http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent?write=true
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 09:52:01
+17 http request GET http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent?write=true
+18 http 200 http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent?write=true
+19 verbose headers { server: 'nginx/1.8.0',
+19 verbose headers   date: 'Tue, 26 Dec 2017 01:53:51 GMT',
+19 verbose headers   'content-type': 'application/json; charset=utf-8',
+19 verbose headers   'transfer-encoding': 'chunked',
+19 verbose headers   connection: 'keep-alive',
+19 verbose headers   vary: 'Accept-Encoding',
+19 verbose headers   etag: '"165-MWaCM3lvTqNJQyviKYPOmA"',
+19 verbose headers   'content-encoding': 'gzip',
+19 verbose headers   'x-readtime': '3' }
+20 verbose adduser userobj { _id: 'org.couchdb.user:elementli_at_tencent',
+20 verbose adduser   name: 'elementli_at_tencent',
+20 verbose adduser   password: 'XXXXX',
+20 verbose adduser   email: 'elementli@tencent.com',
+20 verbose adduser   type: 'user',
+20 verbose adduser   roles: [],
+20 verbose adduser   date: '2017-12-26T01:52:01.139Z' }
+21 verbose request uri http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent/-rev/1-b54fd02478a69933be89d86d9ad0f7ee
+22 verbose request updating existing user; sending authorization
+23 info attempt registry request try #1 at 09:52:01
+24 http request PUT http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent/-rev/1-b54fd02478a69933be89d86d9ad0f7ee
+25 http 401 http://r.tnpm.oa.com/-/user/org.couchdb.user:elementli_at_tencent/-rev/1-b54fd02478a69933be89d86d9ad0f7ee
+26 verbose headers { server: 'nginx/1.8.0',
+26 verbose headers   date: 'Tue, 26 Dec 2017 01:53:51 GMT',
+26 verbose headers   'content-type': 'application/json; charset=utf-8',
+26 verbose headers   'content-length': '47',
+26 verbose headers   connection: 'keep-alive',
+26 verbose headers   vary: 'Accept-Encoding',
+26 verbose headers   'x-readtime': '3' }
+27 verbose request invalidating /Users/elementli/.npm/r.tnpm.oa.com/-/user/org.couchdb.user_3Aelementli_at_tencent on PUT
+28 verbose adduser back [ { Error: unauthorized Login first: -/user/org.couchdb.user:elementli_at_tencent/-rev/1-b54fd02478a69933be89d86d9ad0f7ee
+28 verbose adduser       at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+28 verbose adduser       at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+28 verbose adduser       at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+28 verbose adduser       at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+28 verbose adduser       at emitTwo (events.js:106:13)
+28 verbose adduser       at Request.emit (events.js:191:7)
+28 verbose adduser       at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+28 verbose adduser       at emitOne (events.js:96:13)
+28 verbose adduser       at Request.emit (events.js:188:7)
+28 verbose adduser       at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12) statusCode: 401, code: 'E401' },
+28 verbose adduser   { error: 'unauthorized', reason: 'Login first' },
+28 verbose adduser   '{"error":"unauthorized","reason":"Login first"}' ]
+29 warn adduser Incorrect username or password
+29 warn adduser You can reset your account by visiting:
+29 warn adduser
+29 warn adduser     https://npmjs.org/forgot
+30 verbose stack Error: unauthorized Login first: -/user/org.couchdb.user:elementli_at_tencent/-rev/1-b54fd02478a69933be89d86d9ad0f7ee
+30 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+30 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+30 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+30 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+30 verbose stack     at emitTwo (events.js:106:13)
+30 verbose stack     at Request.emit (events.js:191:7)
+30 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+30 verbose stack     at emitOne (events.js:96:13)
+30 verbose stack     at Request.emit (events.js:188:7)
+30 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+31 verbose statusCode 401
+32 verbose cwd /Users/elementli/Works/TestZone/npm/xlsx-2-json
+33 error Darwin 17.0.0
+34 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "adduser"
+35 error node v6.9.4
+36 error npm  v3.10.10
+37 error code E401
+38 error unauthorized Login first: -/user/org.couchdb.user:elementli_at_tencent/-rev/1-b54fd02478a69933be89d86d9ad0f7ee
+39 error If you need help, you may report this error at:
+39 error     <https://github.com/npm/npm/issues>
+40 verbose exit [ 1, true ]

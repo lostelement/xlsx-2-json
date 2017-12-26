@@ -17,19 +17,11 @@ module.exports = {
 
 function _toJson(excel_file,output,callback) 
 { 
-  var file = load_xlsx_file(excel_file);
-  file.Sheets.forEach(sheet,index)=>{
-    parse(toCsv(sheet), output+file.SheetNames[index]+".json", callback);
-  }
-}
-
-function load_xlsx_file = function(input) {
-  return xlsx.readFile(input);
-}
-
-
-function toCsv(file) {
-  return xlsx.utils.make_csv(file);
+  var file = xlsx.readFile(excel_file);
+  console.log(file.SheetNames);
+  file.SheetNames.forEach((sheetName,index)=>{
+    parse(xlsx.utils.make_csv(file.Sheets[sheetName]), output+sheetName+".json", callback);
+  });
 }
 
 function parse(csv, output, callback) 
@@ -86,8 +78,6 @@ function parse(csv, output, callback)
       }
     })
     .on('end', function(count){
-      // when writing to a file, use the 'close' event
-      // the 'end' event may fire before the file has been written
       if(output !== null) {
         var stream = fs.createWriteStream(output, { flags : 'w' });
         stream.write(JSON.stringify(record));
