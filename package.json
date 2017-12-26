@@ -11,8 +11,8 @@
     "url": "git+https://github.com/lostelement/xlsx-2-json.git"
   },
   "keywords": [],
-  "author": "elementli",
-  "license": "ISC",
+  "author": "lostelement",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lostelement/xlsx-2-json/issues"
   },
