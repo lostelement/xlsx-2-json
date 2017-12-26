@@ -22,3 +22,17 @@ xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 	e?console.log(e):console.log(r);
 });
 ```
+
+#3.Sheet and Json
+|toyid|price|name|辅助列|
+|:----|-----|----|:---:|
+|1|100|superman|不会生成|
+```
+[
+	{
+		toyid:1,
+		price:100,
+		name:"superman"
+	}
+]
+```
