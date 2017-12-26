@@ -23,13 +23,14 @@ xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 });
 ```
 
-#3.Sheet and Json
-![Sheet](https://www.snowkit.cn/h5/egj.jpg)
+# 3.Sheet and Json
+![Sheet](https://www.snowkit.cn/h5/egj.png)
 ```javascript
 [
 	{
 		toyid:1,
 		price:100,
+		tags:[101,103,108],
 		name:"superman"
 	}
 ]
