@@ -1,5 +1,5 @@
 {
-  "name": "xlsx-2-json",
+  "name": "xlsx-gen-json",
   "version": "1.0.0",
   "description": "excel to json",
   "main": "index.js",
