@@ -1,33 +1,95 @@
 var fs = require('fs');
 var xlsx = require('xlsx');
 var cvcsv = require('csv');
+var _ = require('lodash');
 
 module.exports = {
-  toJson:function(excel_file,output,callback)
+  toJson:function(excel_file,output,callback,useDictionary)
   {
-      if(!excel_file||!output) 
+      if(!excel_file) 
       {
         console.error("params error...");
         process.exit(1);
       }
-      _toJson(excel_file,output,callback);
+      _toJson(excel_file,output,callback,useDictionary);
+  },
+  sheetsToJson(excel_file,sheets,output,callback,useDictionary)
+  {
+    if(!excel_file||!(sheets instanceof(Array)))
+    {
+      console.error("params error...");
+      process.exit(1);
+    }
+    _sheetToJson(excel_file,sheets,output,callback,useDictionary);
+  },
+  jsonToLua:function(jsonObject,output)
+  {
+    var stream = fs.createWriteStream(output, { flags : 'w' });
+    stream.write(_toLua(jsonObject));
   }
 };
 
 
-function _toJson(excel_file,output,callback) 
+function _toJson(excel_file,output,callback,useDictionary) 
 { 
   var file = xlsx.readFile(excel_file);
   console.log(file.SheetNames);
   file.SheetNames.forEach((sheetName,index)=>{
-    parse(xlsx.utils.make_csv(file.Sheets[sheetName]), output+sheetName+".json", callback);
+    parse(xlsx.utils.make_csv(file.Sheets[sheetName]), output?(output+sheetName+".json"):null, callback,useDictionary,sheetName);
   });
 }
 
-function parse(csv, output, callback) 
+function _sheetToJson(excel_file,sheets,output,callback,useDictionary)
+{
+  var file = xlsx.readFile(excel_file);
+  console.log(file.SheetNames);
+  file.SheetNames.forEach((sheetName,index)=>{
+    if(sheets.indexOf(sheetName)!=-1)
+    {
+      parse(xlsx.utils.make_csv(file.Sheets[sheetName]), output?(output+sheetName+".json"):null, callback,useDictionary,sheetName);
+    }
+  });
+}
+
+function _toLua(obj) {
+    'use strict';
+    if (obj === null || obj === undefined) {
+        return "nil";
+    }
+    if (!_.isObject(obj)) {
+        if (typeof obj === 'string') {
+            return '"' + obj + '"';
+        }
+        return obj.toString();
+    }
+    var result = "{";
+    var isArray = obj instanceof Array;
+    var len = _.size(obj);
+    var i = 0;
+    _.forEach(obj, function(v, k) {
+        if (isArray) {
+            result += _toLua(v);
+        } else {
+            result += '["' + k + '"] = ' + _toLua(v);
+        }
+        if (i < len - 1) {
+            result += ",";
+        }
+        ++i;
+    });
+    result += "}";
+    return result;
+}
+
+function parse(csv, output, callback,useDictionary,sheetName) 
 {
   var record = [];
   var header = [];
+
+  if(useDictionary == true)
+  {
+    record = {}
+  }
 
   cvcsv()
     .from.string(csv)
@@ -73,7 +135,7 @@ function parse(csv, output, callback)
             }
             obj[column.trim()] = v;
           })
-          record.push(obj);
+          useDictionary==true?record[row[1].trim()]=obj:record.push(obj);
         }
       }
     })
@@ -81,13 +143,13 @@ function parse(csv, output, callback)
       if(output !== null) {
         var stream = fs.createWriteStream(output, { flags : 'w' });
         stream.write(JSON.stringify(record));
-        callback(null, record);
+        callback(null, record,sheetName);
       } else {
-        callback(null, record);
+        callback(null, record,sheetName);
       }
       
     })
     .on('error', function(error){
-      callback(error, null);
+      callback(error, null,sheetName);
     });
 }
