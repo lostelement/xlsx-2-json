@@ -35,3 +35,12 @@ xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
 	}
 ]
 ```
+# 4.更新
+1.支持生成以id为Key的Map方式，参数useDictionary
+2.支持生成Lua配置
+```javascript
+const xlsx2json = require("xlsx-gen-json");
+xlsx2json.toJson("./excel/gameconfig.xlsx","./src/config/",function(e,r){
+	xlsx2json.jsonToLua(r,"./src/config/lua/"+s+".lua");
+},true);
+```
